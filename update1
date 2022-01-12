@@ -1,0 +1,178 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Feb 28 18:54:14 2021
+@author: Audri
+"""
+
+import os
+import time #for graphs
+import csv #generate the csv file to generate graphs for report
+import math
+from enum import Enum, auto
+from random import random, choice, randint
+from typing import Any
+import numpy as np
+
+class LocationStates(Enum):
+    START=auto()
+    GOAL=auto()
+    EMPTY=auto()
+    MINE=auto()  #there will be a bomb here
+    UNCOVERED=auto()
+    OBSTACLE=auto()
+
+class Cell:
+    def __init__(self, state: LocationStates, location: (int, int)):
+        self.state = state
+        self.neighbors: list[Cell]=[]
+        self.location: (int, int) = location
+
+    def is_empty(self):
+        return self.state == LocationStates.EMPTY
+
+
+class MineBoard:
+
+    def __init__(self, dim: int, n):
+        self.dim=dim
+        self.n= n
+        self.startNode: Any = None
+        #self.goalNode: Any = None 
+        self.cells: np.ndarray
+       #self.mines=set() #set randomly
+
+        array=[[self.create_cell(x,y) for y in range(self.dim)] for x in range(self.dim)]
+        self.assign_neighbors()
+        if self.dim<1:
+            print("The Mineboard dimension should be greater than 0, dimension {self.dim} is invalid.")
+
+    def generate_board():
+        return None
+
+    def query():
+        return None
+        #as instructed, the mineboard takes in the dimension dxd and n the number of mines
+
+    def create_cell(self, x, y):
+        location = (x,y)
+        if x==0 and y==0: #the upper left corner
+            c=Cell(LocationStates.START, location)
+            self.startNode = c #assigning the start node to the cell location (0,0)
+        else: #random  generation at any location--> speak with group abt this
+            #insert code here
+    return c #returns the cell
+
+    #cells have potentially 8 neighbors
+    """
+          \ | /
+        --cell--
+          / | \
+    """
+    def cell_outofbounds_check(self, x, y):
+        if x-1 >=0: #
+            self.cells[x,y].neighbors.append(self.cells[x-1, y])
+        if x + 1 < self.dim:
+            self.cells[x, y].neighbors.append(self.cells[x + 1, y])
+        if y - 1 >= 0:
+            self.cells[x, y].neighbors.append(self.cells[x, y - 1])
+        if y + 1 < self.dim: 
+            self.cells[x, y].neighbors.append(self.cells[x, y + 1])
+        if x-1 >=0 and y-1>=0: #top-left
+            self.cells[x,y].neighbors.append(self.cells[x-1,y-1])
+        if x-1 >=0 and y+1 < self.dim: #top-right
+            self.cells[x,y].neighbors.append(self.cells[x-1, y+1])
+        if x + 1 < self.dim and y - 1 >= 0: #bottom-left
+            self.cells[x,y].neighbors.append(self.cells[x+1, y-1])
+        if x + 1 < self.dim and y+1 < self.dim: #bottom-right
+            self.cells[x,y].neighbors.append(self.cells[x+1, y+1])
+
+    def assign_neighbors(self):
+        if self.dim > 1:  # must have more than 1 cell, otherwise no neighbors exist
+            [[self.cell_outofbounds_check(x, y) for y in range(self.dim)] for x in range(self.dim)]
+    
+    def get_cell(self, s: (int, int)):
+        return self.cells[s[0], s[1]]
+
+
+class Agent(ABC): 
+
+    def _init_():
+        return None
+
+    def generate_new_game():
+        return None
+
+    def init_KB():
+        return None
+
+    def choose_cell():
+        return None
+
+    def query_update_infer():
+        return None
+
+    def play():
+        return None
+
+
+class BasicAgent(Agent):
+    def _init_():
+        return None
+
+    def generate_new_game():
+        return None
+
+    def init_KB():
+        return None
+
+    def choose_cell():
+        return None
+
+    def query_update_infer():
+        return None
+
+    def play():
+        return None
+
+
+
+class ImprovedAgent(Agent): 
+
+    def _init_():
+        return None
+
+    def generate_new_game():
+        return None
+
+    def init_KB():
+        return None
+
+    def choose_cell():
+        return None
+
+    def query_update_infer():
+        return None
+
+    def play():
+        return None
+
+
+class HumanAgent(Agent):
+
+    def _init_():
+        return None
+
+    def generate_new_game():
+        return None
+
+    def init_KB():
+        return None
+
+    def choose_cell():
+        return None
+
+    def query_update_infer():
+        return None
+
+    def play():
+        return None

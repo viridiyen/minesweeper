@@ -1,0 +1,64 @@
+Environment representing board and mines
+    generate a dxd board containing n mines given n and d
+    upon query, return whether or not mine was there and how many cells have mines
+
+Agent that plays a board
+    maintain a knowledge base (its own incomplete version of the board?)
+    every round, assess knowledge base and decide which closed cell to query
+    query, update its knowledge base using the response, and perform any inferences or deductions
+    continue until entire board is revealed and assess final score by number of mines sucessfully identified out of total number of mines    
+    
+    BasicAgent
+    Improved Agent
+    
+HumanAgent? (to debug Environment)
+
+-------------------------------------------------
+
+class MineBoard:
+    //maintains a board with 1 means mine 0 means free (make it unavailable to outside class somehow)
+    __init__ (d,n) //initializes board
+    
+    //whether it was a mine and how many surrounding cells have mines
+    query(cell)
+
+//for ImprovedAgent KB
+class Sentence:
+    //for ImprovedAgent
+ 
+/for BasicAgent KB
+class Cell:
+    //has all the info specified for BasicAgent
+
+//super class (abstract class)
+class Agent
+    //maintains some kind of data structure for the KB
+    //maintains MineBoard object
+    
+    __init__ ()
+        generate_new_game()
+    
+    generate_new_game()
+        //create Mineboard object
+        init_KM()
+    
+    init_KB()
+    
+    choose_cell()
+    
+    query_update_infer(cell)
+    
+    //uses the above methods
+    play()
+        -return a score
+        
+
+//implements its own init_KB(), choose_cell(), query_update_infer()
+class BasicAgent(Agent)
+    //maintains 2d array of dictionaries containing info to keep track of each cell
+
+//implements its own init_KB(), choose_cell(), query_update_infer()
+class ImprovedAgent(Agent)
+
+//for humans to play a MineSweeper board
+class HumanAgent(Agent)
